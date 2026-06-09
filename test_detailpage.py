@@ -1,13 +1,9 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 import time
 
-def test_detailpage():
-    driver = webdriver.Chrome()
-    driver.get("https://automationexercise.com")
+def test_detailpage(driver):
 
-    time.sleep(2)
     pd_btn = driver.find_element(By.CSS_SELECTOR, "a[href='/products']")
     driver.execute_script("arguments[0].click();", pd_btn)
 
