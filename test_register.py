@@ -1,16 +1,11 @@
-from selenium import webdriver
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
 import time
 
-def test_register():
-    driver = webdriver.Chrome()
-
-    driver.get("http://automationexercise.com")
-
-    time.sleep(2)
-
+def test_register(driver):
+  
     assert "Automation Exercise" in driver.title
 
     driver.find_element(By.CSS_SELECTOR, "a[href='/login']").click()
@@ -18,7 +13,7 @@ def test_register():
     assert "New User Signup!" in driver.page_source
 
     driver.find_element(By.NAME, "name").send_keys("juhyuns")
-    driver.find_element(By.CSS_SELECTOR, "[data-qa='signup-email']").send_keys("test2223@gmail.com")
+    driver.find_element(By.CSS_SELECTOR, "[data-qa='signup-email']").send_keys("test12!2@gmail.com")
     driver.find_element(By.CSS_SELECTOR, "[data-qa='signup-button']").click()
 
     assert "Enter Account Information" in driver.page_source

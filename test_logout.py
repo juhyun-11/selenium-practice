@@ -1,14 +1,10 @@
-from selenium import webdriver
+
 from selenium.webdriver.common.by import By
 
 import time
 
-def test_logout():
-    driver = webdriver.Chrome()
-    driver.get("https://automationexercise.com")
-
-    time.sleep(2)
-    
+def test_logout(driver):
+  
     driver.find_element(By.CSS_SELECTOR, "a[href='/login']").click()
 
     assert "Login to your account" in driver.page_source
