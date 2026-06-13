@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+from pages import go_to_cart, add_product_to_cart
 
 import time
 
@@ -9,8 +10,7 @@ def test_addcart(driver):
     product = driver.find_element(By.CSS_SELECTOR, ".product-overlay")
     ActionChains(driver).move_to_element(product).perform()
 
-    add_to_cart = driver.find_element(By.CSS_SELECTOR, "a[data-product-id='1']")
-    driver.execute_script("arguments[0].click();", add_to_cart)
+    add_product_to_cart(driver,1)
 
     time.sleep(2)
 
@@ -21,11 +21,9 @@ def test_addcart(driver):
     product = driver.find_element(By.CSS_SELECTOR, ".product-overlay")
     ActionChains(driver).move_to_element(product).perform()
 
-    add_to_cart = driver.find_element(By.CSS_SELECTOR, "a[data-product-id='2']")
-    driver.execute_script("arguments[0].click();", add_to_cart)
+    add_product_to_cart(driver, 2)
 
-    cart_btn = driver.find_element(By.CSS_SELECTOR, "a[href='/view_cart']")
-    driver.execute_script("arguments[0].click();", cart_btn)
+    go_to_cart(driver)
 
     assert "Blue Top" in driver.page_source
     assert "Rs. 500" in driver.page_source
