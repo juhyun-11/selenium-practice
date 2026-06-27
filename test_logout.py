@@ -9,7 +9,7 @@ def test_logout(driver):
 
     assert "Login to your account" in driver.page_source
 
-    driver.find_element(By.CSS_SELECTOR, "[data-qa='login-email']").send_keys("test2223@gmail.com")
+    driver.find_element(By.CSS_SELECTOR, "[data-qa='login-email']").send_keys("test990$@gmail.com")
     driver.find_element(By.CSS_SELECTOR, "[data-qa='login-password']").send_keys("asdf1234!")
     driver.find_element(By.CSS_SELECTOR, "[data-qa='login-button']").click()
     

@@ -1,8 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
-from pages import go_to_cart, add_product_to_cart
+from pages import go_to_cart, add_product_to_cart, wait_for
 
-import time
 
 def test_addcart(driver):
     prt_btn = driver.find_element(By.CSS_SELECTOR, "a[href='/products']")
@@ -12,8 +11,7 @@ def test_addcart(driver):
 
     add_product_to_cart(driver,1)
 
-    time.sleep(2)
-
+    wait_for(driver, By.CSS_SELECTOR, "[data-dismiss='modal']")
     assert "Added!" in driver.page_source
 
     ctn_btn = driver.find_element(By.CSS_SELECTOR, "[data-dismiss='modal']")
