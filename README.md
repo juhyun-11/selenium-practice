@@ -35,5 +35,3 @@ I practiced writing maintainable automation code with Page Object Model (POM), r
 - Assertions
 - Code refactoring
 
-## Next Step
-- API Testing (Postman)
