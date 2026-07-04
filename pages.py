@@ -15,3 +15,11 @@ def add_product_to_cart(driver, product_id):
     btn = driver.find_element(By.CSS_SELECTOR, f"a[data-product-id='{product_id}']")
     driver.execute_script("arguments[0].click();", btn)
 
+def go_to_cart_from_modal(driver):
+    btn = wait_for(driver, By.CSS_SELECTOR, "#cartModal a[href='/view_cart']")
+    driver.execute_script("arguments[0].click();", btn)
+
+
+def go_to_cart_from_header(driver):
+    btn = wait_for(driver, By.CSS_SELECTOR, "header a[href='/view_cart']")
+    driver.execute_script("arguments[0].click();", btn)
