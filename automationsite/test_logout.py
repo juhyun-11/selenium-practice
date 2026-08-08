@@ -1,7 +1,6 @@
 
 from selenium.webdriver.common.by import By
 
-import time
 
 def test_logout(driver):
   
