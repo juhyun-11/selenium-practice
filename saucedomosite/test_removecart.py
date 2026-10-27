@@ -20,6 +20,9 @@ def test_remove_cart(driver):
     product.click()
     print("2. product page") 
 
+    badge = wait_for(driver, By.CLASS_NAME, "shopping_cart_badge")
+    assert badge.text == "1"
+
     cart_btn = wait_for(driver, By.CLASS_NAME, "shopping_cart_link")
     cart_btn.click()
     print("3. cart success")
@@ -42,3 +45,7 @@ def test_remove_cart(driver):
                       "continue-shopping")
     ctn_shopping.click()
 
+    product = wait_for(driver, By.CSS_SELECTOR, "[data-test='add-to-cart-sauce-labs-bike-light']")
+
+    title = wait_for(driver, By.CSS_SELECTOR, "[data-test='title']")
+    assert title.text == "Products"
