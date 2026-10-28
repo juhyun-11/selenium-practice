@@ -9,6 +9,8 @@ from selenium.webdriver.common.by import By
 def driver():
     #1.설정 준비
     options = webdriver.ChromeOptions()
+    options.add_argument("--headless=new")
+    
     prefs = {
         "credentials_enable_service": False,
         "profile.password_manager_enabled": False,
