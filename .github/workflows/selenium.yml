@@ -26,4 +26,4 @@ jobs:
 
       - name: Run cart removal test
         working-directory: saucedomosite
-        run: python -m pytest test_removecart.py -v
+        run: python -m pytest -v
