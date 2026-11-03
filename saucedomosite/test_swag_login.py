@@ -4,9 +4,7 @@ from selenium.webdriver.common.by import By
 
 import time
 
-def test_login():
-    driver = webdriver.Chrome()
-    driver.get("https://www.saucedemo.com/")
+def test_login(driver):
 
     username = driver.find_element(By.ID, "user-name")
     username.send_keys("standard_user")
@@ -18,6 +16,6 @@ def test_login():
     driver.execute_script("arguments[0].click();", login_btn)
 
 
-    assert "inventory.html" in driver.current_ur
+    assert "inventory.html" in driver.current_url
     
 
