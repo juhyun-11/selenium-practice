@@ -13,13 +13,22 @@ Python / Selenium WebDriver / pytest / GitHub Actions
 ## Project Structure
 
 ```text
-saucedomosite/
-├── conftest.py             # driver fixture (브라우저 생성·종료, Headless 설정)
-├── pages.py                # 명시적 대기 공통 함수 (wait_for)
-├── test_swag_login.py      # 로그인 테스트
-├── test_login_locked_out.py# 잠긴 계정 로그인 차단 테스트
-├── test_removecart.py      # 상품 1개 추가·삭제 테스트
-└── test_cart_two_items.py  # 상품 2개 추가·삭제 테스트
+selenium-practice/
+├── .github/
+│   └── workflows/
+│       └── selenium.yml      # GitHub Actions CI 설정
+├── saucedomosite/
+│   ├── conftest.py           # WebDriver fixture 및 Headless 설정
+│   ├── pages.py              # 공통 명시적 대기 함수
+│   ├── test_swag_login.py    # 정상 로그인
+│   ├── test_login_locked_out.py  # 잠긴 계정 로그인 차단
+│   ├── test_removecart.py    # 상품 1개 추가 및 삭제
+│   └── test_cart_two_items.py  # 상품 2개 추가 및 삭제
+├── archive/
+│   └── automationsite/       # 초기 Selenium 학습 코드 (테스트 실행 제외)
+├── pytest.ini                # 기본 테스트 수집 경로 설정
+├── .gitignore
+└── README.md
 ```
 
 ## Test Scenarios
@@ -62,7 +71,7 @@ assert len(items) == 2
 3. Headless Chrome에서 `python -m pytest -v` 실행
 4. GitHub Actions 로그에서 PASS/FAIL 결과 확인
 
-특정 테스트 파일을 개별 지정하지 않고 pytest의 자동 수집 기능을 사용했습니다. 새로운 `test_*.py` 파일을 추가하면 workflow를 수정하지 않고도 함께 실행할 수 있습니다.
+`saucedomosite/` 폴더의 테스트는 pytest가 자동 수집하도록 구성했습니다. 새로운 `test_*.py` 파일을 해당 폴더에 추가하면 workflow를 수정하지 않고 함께 실행할 수 있습니다.
 
 **최근 실행 결과**
 
@@ -73,22 +82,29 @@ assert len(items) == 2
 
 ## Run Tests
 
-**준비**
-
-- Python 3.12 (CI 검증 환경), Chrome 브라우저
-- 의존성 설치: `pip install pytest selenium`
-
-`saucedomosite` 폴더에서 실행합니다.
+**준비 환경**
+- Python 3.12 (GitHub Actions 검증 환경)
+- Google Chrome
+- Selenium, pytest 설치
 
 ```bash
-# 전체 테스트 실행
-python -m pytest -v
-
-# 특정 테스트 파일 실행
-python -m pytest test_removecart.py -v
+pip install pytest selenium
 ```
 
-로그인 계정은 SauceDemo가 공개한 테스트 계정(`standard_user`)을 사용합니다.
+**프로젝트 최상위 폴더에서 실행**
+
+```bash
+# 전체 테스트 4개 실행
+python -m pytest -v
+
+# 특정 테스트만 실행
+python -m pytest saucedomosite/test_removecart.py -v
+```
+
+`pytest.ini`에서 기본 테스트 경로를 `saucedomosite`로 지정하여
+`archive/`의 초기 연습 코드는 기본 실행 대상에서 제외했습니다.
+
+로그인 계정은 SauceDemo에서 제공하는 공개 테스트 계정(`standard_user`)을 사용합니다.
 
 ## Related
 

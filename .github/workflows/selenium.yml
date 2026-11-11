@@ -24,6 +24,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest selenium
 
-      - name: Run cart removal test
+      - name: Run SauceDemo tests
         working-directory: saucedomosite
         run: python -m pytest -v

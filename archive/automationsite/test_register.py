@@ -29,7 +29,7 @@ def test_register(driver):
 
     driver.find_element(By.ID, "first_name").send_keys("juhyun")
     driver.find_element(By.ID, "last_name").send_keys("juhyun")
-    driver.find_element(By.ID, "company").send_keys("photoism")
+    driver.find_element(By.ID, "company").send_keys("TestCompany")
     driver.find_element(By.ID, "address1").send_keys("jakokro202")
     Select(driver.find_element(By.ID, "country")).select_by_value("United States")
     driver.find_element(By.ID, "state").send_keys("newyork")
