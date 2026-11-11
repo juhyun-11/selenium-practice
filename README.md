@@ -17,6 +17,7 @@ saucedomosite/
 ├── conftest.py             # driver fixture (브라우저 생성·종료, Headless 설정)
 ├── pages.py                # 명시적 대기 공통 함수 (wait_for)
 ├── test_swag_login.py      # 로그인 테스트
+├── test_login_locked_out.py# 잠긴 계정 로그인 차단 테스트
 ├── test_removecart.py      # 상품 1개 추가·삭제 테스트
 └── test_cart_two_items.py  # 상품 2개 추가·삭제 테스트
 ```
@@ -28,6 +29,7 @@ saucedomosite/
 | `test_swag_login.py` | 정상 계정 로그인 후 상품 목록 페이지(`inventory.html`) 진입 |
 | `test_removecart.py` | 상품 1개 추가 → 배지·상품명 확인 → 삭제 → 배지 제거 → 쇼핑 계속하기 |
 | `test_cart_two_items.py` | 상품 2개 추가 → 배지 `1`, `2` 확인 → 장바구니 상품 2개·상품명 확인 → 1개 삭제 → 배지 `1`·잔여 상품명 확인 |
+| `test_login_locked_out.py` | 잠긴 계정(`locked_out_user`) 로그인 시 오류 메시지 표시 및 로그인 페이지 유지 확인 |
 
 ## Troubleshooting
 
@@ -66,7 +68,7 @@ assert len(items) == 2
 
 | 실행 환경 | Python | 테스트 결과 |
 |---|---|---|
-| Ubuntu Linux | 3.12 | `3 passed` |
+| Ubuntu Linux | 3.12.16 | `4 passed` |
 [![Selenium E2E Test](https://github.com/juhyun-11/selenium-practice/actions/workflows/selenium.yml/badge.svg)](https://github.com/juhyun-11/selenium-practice/actions/workflows/selenium.yml)
 
 ## Run Tests
